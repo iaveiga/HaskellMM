@@ -63,5 +63,8 @@ main=do
 	if clave == cfg then putStrLn "Ganaste" else putStrLn "Perdiste"
 	--print a
 	
-
+let score b w =
+	if b == 4
+		then return 4 * (4 + 3) / 2 -1
+		else return (((b+w) * (b + w) / 2) + b)
 	
