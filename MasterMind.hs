@@ -111,5 +111,32 @@ main=do
 	if clave == cfg then putStrLn "Ganaste" else putStrLn "Perdiste"
 	--print a
 	
+	
+
+let potencial letra1 letra2 letra3 letra4 codigo1 it blacks{
+	for i = 0, i<= blacks, i++
+		let aleatorio = randomRIO(0,3)
+		if aleatorio == 1
+			if letra1 != "Z"
+				return (potencial (codigo1!!1, letra2, letra3, letra4, codigo1, it, blacks)
+			else
+				return (potencial (letra1,letra2,letra3,letra4,codigo1,it,blacks)
+		else if aleatorio == 2
+			if letra2 != "Z"
+				return (potencial (letra1,codigo1!!2, letra3, letra4, codigo1, it, blacks)
+			else
+				return (potencial (letra1,letra2,letra3,letra4,codigo1,it,blacks)
+		
+		else if aleatorio == 3
+			if letra3 != "Z"
+				return (potencial (letra1, letra2,codigo1!!3,letra4, codigo1, it, blacks)
+			else
+				return (potencial (letra1,letra2,letra3,letra4,codigo1,it,blacks)
+		
+		else if aleatorio == 4
+			if letra1 != "Z"
+				return (potencial (letra1, letra2, letra3, codigo1!!4, codigo1, it, blacks)
+			else
+				return (potencial (letra1,letra2,letra3,letra4,codigo1,it,blacks)
 
 	
