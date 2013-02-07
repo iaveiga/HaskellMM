@@ -12,18 +12,24 @@ swap i j xs | i == j    = xs
           swap'' a j (x:xs) = let (b,xs') = swap'' a (j-1) xs in (b, x:xs')
 
 
-interneg :: Int -> [Char] -> [Int] -> [Char]
-interneg neg cad rand 
-					  let cadnew=['Z','Z','Z','Z'] in
-					  | neg==1 
-						let cadnew=['Z','Z','Z','Z'] 
-							a=rand!!0
-						in 
-						= cade
-				      | neg==2 =swap 0 2 (swap 1 3 cad)
-				      | neg==3 =swap 0 2 cad
-				      | neg==4 =swap 0 2 cad
+introducir :: Char -> [Char] -> Int -> [Char]
+introducir elem cad pos 
+					  | pos==0 =[elem, cad!!1, cad!!2, cad!!3]
+				      | pos==1 =[cad!!0, elem, cad!!2, cad!!3]
+				      | pos==2 =[cad!!0, cad!!1, elem, cad!!3]
+				      | pos==3 =[cad!!0, cad!!1, cad!!2, elem]
 					  | otherwise =cad
+
+blacks :: [Char] -> [Char] -> Int -> Int -> [Int] -> [Char]
+blacks gues ztas iter neg aleat =
+			let 
+				array = (introducir (gues!!(aleat!!iter)) ztas (aleat!!iter)) 
+				i=iter+1
+			in
+			if iter < neg then blacks gues array i neg aleat
+			else ztas
+						
+
 
 negras :: Eq a => [a]-> [a] -> Int -> Int
 negras guess clave iter =
@@ -73,7 +79,6 @@ main :: IO()
 main=do
 	putStrLn "MasterMind"
 	c <- readAInt
-	
 	let
 		score b w =
 			if b == 4
@@ -84,17 +89,20 @@ main=do
 		--a=c+5
 		colours = ['A','B','C','D','E','F']
 		cfg = take 4 $ randomRs ('A','F') (mkStdGen 4) :: [Char]
-		ent=take 4 $ randomRs (0,3) (mkStdGen 4) :: [Int]
+		ent=take 4 $ randomRs (0,3) (mkStdGen 3) :: [Int]
 		entero= ent !! 1
+		
 		negra = negras clave yatu 0
 		blanc=blanca1 yatu clave 0 0
 		blancas=blanca yatu clave 
 		yatu = swap 1 2 clave 
-		new=interblanc 2 cfg ent
+		def=['Z','Z','Z','Z']
+		new=blacks clave def 0 2 ent
 	putStrLn clave
 	putStrLn yatu
 	putStrLn colours
 	putStrLn cfg
+	print ent
 	print negra
 	print blancas
 	print blanc
