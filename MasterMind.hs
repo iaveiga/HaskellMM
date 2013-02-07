@@ -46,6 +46,18 @@ blacks gues ztas aleat =
 				else array	
 
 
+
+respValida :: [Char] -> [Char] -> Bool
+respValida resppotencial respanterior
+	let score1 = score (resppotencial)
+	    score2 = score (respanterior)
+	if score1>=score2 
+	then True
+	else False    
+
+
+
+
 negras :: Eq a => [a]-> [a] -> Int -> Int
 negras guess clave iter =
 	let i=iter+1 in
