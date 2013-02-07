@@ -155,5 +155,27 @@ let potencial letra1 letra2 letra3 letra4 codigo1 it blacks{
 				return (potencial (letra1, letra2, letra3, codigo1!!4, codigo1, it, blacks)
 			else
 				return (potencial (letra1,letra2,letra3,letra4,codigo1,it,blacks)
+				
+let potencialw letra1 letra2 letra3 letra4 codigo1 potencialG it whites
+	aleatorio <- randomRIO(0,3)
+	--ciclo for
+
+	if codigop!!aleatorio == codigo1!!aleatorio
+		then potencialw letra1 letra2 letra3 letra4 codigo1 potencialG it whitesciclo for
+
+		else
+			if codigop!!0 == "Z"
+				then codigop!!0 = codigo1!!aleatorio
+				return 
+			else if codigop!!1 == "Z"
+				then codigop!!1 = codigo1!!aleatorio
+				return
+			else if codigop!!2 == "Z"
+				then codigop!!2 = codigo1!!aleatorio
+				return 
+			else
+				codigop!!3 = codigo1!!aleatorio
+				return
+
 
 	
