@@ -12,6 +12,55 @@ pegs are given. The game stops when the code breaker finds the combination, the 
 the secret combination in as few guesses as possible."
 
 \section{Resolving}
+To solve the problem we implemented a code breaker based on \textbf{
+A heuristic hill climbing algorithm for mastermind}, a paper from University of Bristol, the main algorithm is: 
+ \begin{enumerate}
+  \item We submit to the Code maker a random guess
+ 	constructed with 4 genes that we call the “Current
+ 	Favourite Guess” (CFG).
+ 	\item From the CFG, we induce a new potential code
+ 	with the method described in section paper.
+ 	\item If potential code is not consistent with all previous
+ 	guesses, go to step 2 otherwise submit it as new
+ 	guess.
+ 	\item If submitted guess scores [0,0] then suppress from
+ 	the pool of colours all the colours present in the last
+ 	submitted guess. Then find a new random
+ 	combination (with the new pool of valid colours)
+ 	consistent with all previous guesses’ scores and set
+ 	this new combination as new CFG and submit it to
+ 	the code setter.
+ 	\item If submitted guess score is as good as or better
+ 	than CFG score according to the heuristic described
+ 	in section 3.2, then set this guess to be our new CFG
+ 	and also set the new score as best score.
+ 	\item If submitted guess scores [4,0], stop otherwise go
+ 	to step 2.
+ \end{enumerate}
+
+\section{Why Climbing hill?}
+We use climbing hill because none of the members has taken an Artificial Intelligence course to understand the basics of genetics algorithms, so we decided to use Climbing Hill because it's less complex.
+
+\section{Experiences}
+The main problem while developing in Haskell is the big change of the thinking model, changing from imperative thinking to mathematical thinking. In this project we consider that the change of paradigm was so hard  because from the first yearsof college we are introduced to the concept of imperative languages and the time to make this changewas too short.\\
+
+Another problem we faced was how picky Haskell can be with syntax errors. We spent a lot of time fixing syntax errors on the program, and as we fixed one, a new one poped up. This is one of the reasons why working on Haskell was not as enjoyable as working with other languages.\\
+
+The short period of time available is what made us have a bad experience with functional programming languages and because of this, we couldn't appreciate all the benefits of working with one.
+\textbf{Haskell: Mastermind\footnote{Aveiga Iván, Enríquez Wilson, Íñiguez Pedro}}
+
+\section{Introduction}
+Mastermind or Master Mind is a code-breaking game for two players. The modern game with pegs was invented in 1970 by Mordecai Meirowitz, an Israeli postmaster and telecommunications expert, but the game resembles an earlier pencil and paper game called Bulls and Cows that may date back a century or more. \\
+
+"One player is the code maker, and selects a combination consisting of four pegs, each of which can be either red, yellow, blue, green, black or white. All four positions must contain a peg, no blanks are allowed and a colour can be used one or any number of times in a combination. The other player is called the code breaker and has to find
+the combination, taking as few guesses as possible. After each guess is made, the code maker scores it
+with small score pegs. Black pegs are given for each coloured peg which has the correct colour and correct
+position. White pegs are given for each coloured peg which has a correct colour but is out of position. If
+none of the coloured pegs in a guess matches any of the coloured pegs in the combination, then no score
+pegs are given. The game stops when the code breaker finds the combination, the goal being to find
+the secret combination in as few guesses as possible."
+
+\section{Resolving}
 To resolve we implement a code breaker based in \textbf{
 A heuristic hill climbing algorithm for mastermind}, a paper from University of Bristol, the principal algorithm is: 
  \begin{enumerate}
