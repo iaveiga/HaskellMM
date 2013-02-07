@@ -17,9 +17,45 @@
 \newpage
 
 \section{Introduction}
-Mastermind is a board game consisting
+Mastermind or Master Mind is a code-breaking game for two players. The modern game with pegs was invented in 1970 by Mordecai Meirowitz, an Israeli postmaster and telecommunications expert, but the game resembles an earlier pencil and paper game called Bulls and Cows that may date back a century or more. \\
 
+"One player is the code maker, and selects a combination consisting of four pegs, each of which can be either red, yellow, blue, green, black or white. All four positions must contain a peg, no blanks are allowed and a colour can be used one or any number of times in a combination. The other player is called the code breaker and has to find
+the combination, taking as few guesses as possible. After each guess is made, the code maker scores it
+with small score pegs. Black pegs are given for each coloured peg which has the correct colour and correct
+position. White pegs are given for each coloured peg which has a correct colour but is out of position. If
+none of the coloured pegs in a guess matches any of the coloured pegs in the combination, then no score
+pegs are given. The game stops when the code breaker finds the combination, the goal being to find
+the secret combination in as few guesses as possible."
 
+\section{Resolving}
+To resolve we implement a code breaker based in \textbf{
+A heuristic hill climbing algorithm for mastermind}, a paper from University of Bristol, the principal algorithm is: 
+ \begin{enumerate}
+ 	\item We submit to the Code maker a random guess
+ 	constructed with 4 genes that we call the “Current
+ 	Favourite Guess” (CFG).
+ 	\item From the CFG, we induce a new potential code
+ 	with the method described in section paper.
+ 	\item If potential code is not consistent with all previous
+ 	guesses, go to step 2 otherwise submit it as new
+ 	guess.
+ 	\item If submitted guess scores [0,0] then suppress from
+ 	the pool of colours all the colours present in the last
+ 	submitted guess. Then find a new random
+ 	combination (with the new pool of valid colours)
+ 	consistent with all previous guesses’ scores and set
+ 	this new combination as new CFG and submit it to
+ 	the code setter.
+ 	\item If submitted guess score is as good as or better
+ 	than CFG score according to the heuristic described
+ 	in section 3.2, then set this guess to be our new CFG
+ 	and also set the new score as best score.
+ 	\item If submitted guess scores [4,0], stop otherwise go
+ 	to step 2.
+ \end{enumerate}
+
+\section{Why Climbing hill?}
+We use climbing hill because none of the members has taken Artificial Intelligence to understand the basis of genetics algorithms, then we decided use Climbing Hill because is less complex.
 
 \section{Experiences}
 The principal problem in the moment of develop in Haskell is the big change of thinking model, changing from imperative thinking to mathematical thinking. In this project we consider the change of paradigm was so hard, because from firsts years the university introduces in the concept of imperative and the time to make this change is so short. 
