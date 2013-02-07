@@ -31,6 +31,21 @@ blacks gues ztas iter neg aleat =
 						
 
 
+
+nulas :: [Char] -> [Char] -> Int -> Int -> [Int] -> [Char]
+blacks gues ztas aleat =
+			let 
+				if ztas!!0 == z
+				array = (introducir (aleat ztas 0) 
+					else if ztas!!1 == z
+					array = (introducir (aleat ztas 1) 			
+						else if ztas!!2 == z
+						array = (introducir (aleat ztas 2) 			
+						else if ztas!!3 == z
+						array = (introducir (aleat ztas 3) 			
+				else array	
+
+
 negras :: Eq a => [a]-> [a] -> Int -> Int
 negras guess clave iter =
 	let i=iter+1 in
@@ -39,6 +54,8 @@ negras guess clave iter =
 				then 1+negras guess clave i
 				else 0+negras guess clave i
 	else 0
+
+
 
 blanca1 :: Eq a => [a]-> [a] -> Int -> Int -> Int
 blanca1 guess clave iter iter2=
